@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - RePack</title>
+    <title>Terms of Service - PicPack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,46 +14,59 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #6750A4;
+            --background: #FFFBFE;
+            --surface: #FFFFFF;
+            --on-surface: #1C1B1F;
+            --on-surface-variant: #49454F;
+            --outline: #79747E;
+        }
+
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #FFFBFE;
-            color: #1C1B1F;
+            background: var(--background);
+            color: var(--on-surface);
             line-height: 1.6;
-            padding: 24px;
+            padding: 40px 24px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: #FFFFFF;
+            background: var(--surface);
             padding: 48px;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         h1 {
-            font-size: 32px;
-            font-weight: 400;
+            font-size: 40px;
+            font-weight: 700;
             margin-bottom: 8px;
-            color: #6750A4;
+            color: var(--primary);
+            letter-spacing: -1px;
         }
 
         .last-updated {
-            color: #49454F;
+            color: var(--on-surface-variant);
             font-size: 14px;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
+            font-weight: 500;
         }
 
         h2 {
             font-size: 24px;
-            font-weight: 500;
-            margin-top: 32px;
+            font-weight: 700;
+            margin-top: 40px;
             margin-bottom: 16px;
+            color: var(--on-surface);
         }
 
         p {
             margin-bottom: 16px;
-            color: #49454F;
+            color: var(--on-surface-variant);
         }
 
         ul {
@@ -60,12 +76,13 @@
 
         li {
             margin-bottom: 8px;
-            color: #49454F;
+            color: var(--on-surface-variant);
         }
 
         a {
-            color: #6750A4;
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
         }
 
         a:hover {
@@ -73,18 +90,35 @@
         }
 
         .back-link {
-            display: inline-block;
-            margin-bottom: 24px;
-            color: #6750A4;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 32px;
+            color: var(--primary);
+            font-weight: 500;
+            gap: 8px;
+        }
+
+        hr {
+            margin: 40px 0;
+            border: none;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .summary-box {
+            background: #F3EDFF;
+            padding: 24px;
+            border-radius: 16px;
+            color: #21005D;
+            font-size: 14px;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 24px;
+                padding: 32px 24px;
             }
 
             h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
         }
     </style>
@@ -94,113 +128,34 @@
         <a href="index.html" class="back-link">← Back to Home</a>
 
         <h1>Terms of Service</h1>
-        <!-- TODO: Update this date when you publish -->
-        <p class="last-updated">Last updated: October 21, 2025</p>
+        <p class="last-updated">Last updated: January 2, 2026</p>
 
-        <p>By downloading, installing, or using RePack ("the app"), you agree to these Terms of Service. Please read them carefully.</p>
+        <p>By downloading, installing, or using PicPack ("the app"), you agree to these Terms of Service.</p>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By accessing and using RePack, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the app.</p>
+        <h2>1. License to Use</h2>
+        <p>We grant you a personal, non-exclusive, non-transferable, revocable license to use PicPack for your personal, non-commercial use, subject to these terms.</p>
 
-        <h2>2. License to Use</h2>
-        <p>We grant you a personal, non-exclusive, non-transferable, revocable license to use RePack for your personal, non-commercial use, subject to these terms.</p>
+        <h2>2. Data and Privacy</h2>
+        <p>All data you create in PicPack is stored locally on your device. We do not collect, transmit, or have access to your data. Please refer to our <a href="privacy-policy.html">Privacy Policy</a> for more details.</p>
 
-        <h2>3. User Responsibilities</h2>
-        <p>You are responsible for:</p>
-        <ul>
-            <li>Maintaining the security of your device</li>
-            <li>Backing up your data if desired (the app uses Android Auto Backup, but photo backups are not guaranteed)</li>
-            <li>Using the app in compliance with applicable laws and regulations</li>
-            <li>Not attempting to reverse engineer, decompile, or disassemble the app</li>
-        </ul>
+        <h2>3. In-App Purchases</h2>
+        <p>PicPack offers a Pro version as a one-time in-app purchase. Purchases are processed by Google Play and subject to their terms. Purchases are non-refundable except as required by law or Google Play's refund policy.</p>
 
-        <h2>4. Data and Privacy</h2>
-        <p>All data you create in RePack is stored locally on your device. We do not collect, transmit, or have access to your data. Please refer to our <a href="privacy-policy.html">Privacy Policy</a> for more details.</p>
+        <h2>4. Limitation of Liability</h2>
+        <p>PicPack is provided "as is" without warranties. We are not responsible for any data loss resulting from device failure, uninstallation, or other causes. You are responsible for backing up important data if needed.</p>
 
-        <h2>5. In-App Purchases</h2>
-        <p>RePack offers a Pro version as a one-time in-app purchase. By making a purchase:</p>
-        <ul>
-            <li>You agree to pay the price displayed at the time of purchase</li>
-            <li>Purchases are processed by Google Play and subject to their terms</li>
-            <li>Purchases are non-refundable except as required by law or Google Play's refund policy</li>
-            <li>Pro features are unlocked permanently for the Google account used to make the purchase</li>
-        </ul>
+        <h2>5. Disclaimer</h2>
+        <p>PicPack is a tool to help you organize. We do not guarantee that using the app will prevent you from forgetting items. You are solely responsible for ensuring you have packed everything you need.</p>
 
-        <h2>6. Disclaimer of Warranties</h2>
-        <p>RePack is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to:</p>
-        <ul>
-            <li>Warranties of merchantability or fitness for a particular purpose</li>
-            <li>Warranties that the app will be uninterrupted, error-free, or secure</li>
-            <li>Warranties regarding the accuracy or reliability of any content</li>
-        </ul>
-
-        <h2>7. Limitation of Liability</h2>
-        <!-- TODO: Replace "Developer Name" with your actual name or company name -->
-        <p>To the maximum extent permitted by law, Developer Name shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:</p>
-        <ul>
-            <li>Your use or inability to use the app</li>
-            <li>Any loss of data due to device failure, uninstallation, or other causes</li>
-            <li>Any unauthorized access to or use of our servers and/or any personal information stored therein (note: we do not store any personal information)</li>
-            <li>Any bugs, viruses, or other harmful code that may be transmitted to your device</li>
-        </ul>
-
-        <h2>8. Data Loss</h2>
-        <p><strong>Important:</strong> You acknowledge that:</p>
-        <ul>
-            <li>All data is stored locally on your device</li>
-            <li>Data will be permanently lost if you uninstall the app or clear app data</li>
-            <li>Photos may not be backed up automatically due to file size limitations</li>
-            <li>Android Auto Backup may not cover all data in all situations</li>
-            <li>We are not responsible for any data loss</li>
-            <li>You are responsible for backing up important data if needed</li>
-        </ul>
-
-        <h2>9. Intellectual Property</h2>
-        <!-- TODO: Replace "Developer Name" with your actual name -->
-        <p>RePack and its original content, features, and functionality are owned by Developer Name and are protected by international copyright, trademark, and other intellectual property laws.</p>
-
-        <h2>10. Third-Party Services</h2>
-        <p>The app uses the following third-party services:</p>
-        <ul>
-            <li>Google Play Billing (for in-app purchases)</li>
-            <li>Google Play Core (for in-app reviews)</li>
-        </ul>
-        <p>Your use of these services is subject to Google's terms and policies.</p>
-
-        <h2>11. Termination</h2>
-        <p>We may terminate or suspend your access to the app immediately, without prior notice, if you breach these Terms of Service. Upon termination, your right to use the app will cease immediately.</p>
-
-        <h2>12. Changes to Terms</h2>
-        <p>We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to this page. Your continued use of the app after changes constitutes acceptance of the modified terms.</p>
-
-        <h2>13. Governing Law</h2>
-        <!-- TODO: Replace with your actual jurisdiction (country/state) -->
-        <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.</p>
-
-        <h2>14. Age Requirements</h2>
-        <p>RePack is suitable for all ages. If you are under 13 years old, you should use the app with parental supervision.</p>
-
-        <h2>15. No Warranty of Packing Completeness</h2>
-        <p><strong>Disclaimer:</strong> RePack is a tool to help you organize your packing. We do not guarantee that using the app will prevent you from forgetting items. You are solely responsible for ensuring you have packed everything you need for your trip.</p>
-
-        <h2>16. Contact Information</h2>
-        <!-- TODO: Replace with your actual contact email -->
+        <h2>6. Contact Information</h2>
         <p>If you have any questions about these Terms of Service, please contact us at:</p>
-        <p>Email: <a href="mailto:TODO_REPLACE_WITH_YOUR_EMAIL@gmail.com">TODO_REPLACE_WITH_YOUR_EMAIL@gmail.com</a></p>
+        <p>Email: <a href="mailto:klzn.dev@gmail.com">klzn.dev@gmail.com</a></p>
 
-        <h2>17. Severability</h2>
-        <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect.</p>
+        <div class="summary-box">
+            <strong>Summary:</strong> Use PicPack responsibly. Your data is your responsibility. The app is provided as-is. We're not liable for data loss or forgotten items.
+        </div>
 
-        <h2>18. Entire Agreement</h2>
-        <p>These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and us regarding the use of RePack.</p>
-
-        <hr style="margin: 32px 0; border: none; border-top: 1px solid #E0E0E0;">
-
-        <p style="font-size: 14px; color: #79747E;">
-            <strong>Summary:</strong> Use RePack responsibly. Your data is your responsibility. The app is provided as-is. We're not liable for data loss or forgotten items. Be sure to back up your data if it's important.
-        </p>
-
-        <p style="margin-top: 24px;">
+        <p style="margin-top: 32px;">
             <a href="index.html" class="back-link">← Back to Home</a>
         </p>
     </div>

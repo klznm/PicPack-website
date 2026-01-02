@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RePack - A minimalist packing app for stress-free travel. Never forget your essentials again.">
-    <title>RePack - Minimalist Packing App</title>
+    <meta name="description" content="PicPack - A minimalist packing app for stress-free travel. Never forget your essentials again.">
+    <title>PicPack - Minimalist Packing App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <style>
         * {
             margin: 0;
@@ -15,9 +19,12 @@
         :root {
             --primary: #6750A4;
             --primary-light: #7965AF;
+            --primary-container: #EADDFF;
             --on-primary: #FFFFFF;
+            --on-primary-container: #21005D;
             --background: #FFFBFE;
             --surface: #FFFFFF;
+            --surface-variant: #E7E0EC;
             --on-surface: #1C1B1F;
             --on-surface-variant: #49454F;
             --outline: #79747E;
@@ -29,6 +36,7 @@
             background: var(--background);
             color: var(--on-surface);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,11 +47,12 @@
 
         /* Header */
         header {
-            background: var(--surface);
-            box-shadow: 0 2px 4px var(--shadow);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         nav {
@@ -55,8 +64,13 @@
 
         .logo {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 700;
             color: var(--primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
         }
 
         nav ul {
@@ -68,7 +82,9 @@
         nav a {
             text-decoration: none;
             color: var(--on-surface-variant);
+            font-weight: 500;
             transition: color 0.2s;
+            font-size: 15px;
         }
 
         nav a:hover {
@@ -77,58 +93,73 @@
 
         /* Hero Section */
         .hero {
-            padding: 80px 0;
+            padding: 140px 0 100px;
             text-align: center;
+            background: linear-gradient(rgba(33, 0, 93, 0.4), rgba(33, 0, 93, 0.2)), url('images/feature_graphic.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #FFFFFF;
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 400;
+            font-size: 64px;
+            font-weight: 700;
             margin-bottom: 24px;
-            color: var(--on-surface);
+            color: #FFFFFF;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .hero p {
-            font-size: 20px;
-            color: var(--on-surface-variant);
-            margin-bottom: 40px;
+            font-size: 22px;
+            color: #FFFFFF;
+            margin-bottom: 48px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
         /* Buttons */
         .btn {
-            display: inline-block;
-            padding: 16px 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
             border-radius: 100px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             transition: all 0.2s;
             cursor: pointer;
             border: none;
+            gap: 8px;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: var(--on-primary);
-            box-shadow: 0 2px 8px var(--shadow);
+            background: #FFFFFF;
+            color: var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .btn-primary:hover {
-            background: var(--primary-light);
-            box-shadow: 0 4px 12px var(--shadow);
+            background: #F0F0F0;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
         }
 
         .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--outline);
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
         }
 
         .btn-outline:hover {
-            background: rgba(103, 80, 164, 0.08);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #FFFFFF;
         }
 
         .cta-buttons {
@@ -136,69 +167,225 @@
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        /* Screenshots Section */
+        .screenshots-section {
+            padding: 60px 0 100px;
+            background: linear-gradient(to bottom, var(--background), var(--surface));
+            overflow: hidden;
+        }
+
+        .screenshots-wrapper {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .screenshots-container {
+            display: flex;
+            gap: 24px;
+            padding: 40px 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            margin: 0 -24px;
+            scroll-behavior: smooth;
+        }
+
+        .screenshots-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .screenshot-wrapper {
+            flex: 0 0 auto;
+            width: 280px;
+            scroll-snap-align: center;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            position: relative;
+            background: #000;
+            border: 8px solid #1C1B1F;
+        }
+        
+        .screenshot-wrapper:hover {
+            transform: translateY(-10px);
+        }
+
+        .screenshot-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: var(--on-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.2s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .screenshots-wrapper:hover .scroll-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-btn:hover {
+            background: var(--surface);
+            transform: translateY(-50%) scale(1.1);
+            color: var(--primary);
+        }
+
+        .scroll-btn.prev {
+            left: 0;
+        }
+
+        .scroll-btn.next {
+            right: 0;
+        }
+
+        .scroll-track {
+            width: 200px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.1); /* Light track */
+            border-radius: 2px;
+            margin: 32px auto 0; /* Center horizontally */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-thumb {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0; /* Calculated by JS */
+            transition: transform 0.1s linear; /* Smooth movement */
+        }
+
+        @media (max-width: 768px) {
+            .scroll-btn {
+                display: none; /* Hide arrows on mobile where touch works best */
+            }
         }
 
         /* Features Section */
         .features {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--surface);
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
-            font-weight: 400;
-            margin-bottom: 48px;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--on-surface-variant);
+            font-size: 18px;
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
         }
 
         .feature-card {
-            padding: 32px;
+            padding: 40px;
             background: var(--background);
-            border-radius: 16px;
-            box-shadow: 0 2px 8px var(--shadow);
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+            border-color: transparent;
+        }
+
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-container);
+            color: var(--on-primary-container);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 24px;
         }
 
         .feature-card h3 {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 12px;
+            color: var(--on-surface);
         }
 
         .feature-card p {
             color: var(--on-surface-variant);
+            font-size: 16px;
+            line-height: 1.7;
         }
 
         /* Footer */
         footer {
             background: var(--surface);
-            padding: 48px 0;
-            margin-top: 80px;
+            padding: 60px 0 40px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            border-top: 1px solid var(--outline);
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
             gap: 32px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-links a {
             color: var(--on-surface-variant);
             text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
@@ -206,18 +393,26 @@
         }
 
         .copyright {
-            color: var(--on-surface-variant);
-            font-size: 14px;
+            color: var(--outline);
+            font-size: 13px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 40px;
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
             }
 
             nav ul {
-                gap: 16px;
+                display: none;
+            }
+            
+            nav {
+                justify-content: center;
             }
 
             .features-grid {
@@ -231,7 +426,11 @@
 
             .btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
+            }
+            
+            .screenshot-wrapper {
+                width: 240px;
             }
         }
     </style>
@@ -239,9 +438,12 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">RePack</div>
+            <a href="#" class="logo">
+                <img src="images/logo.jpg" alt="PicPack Logo" style="height: 32px; width: 32px; border-radius: 6px;"> PicPack
+            </a>
             <ul>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
                 <li><a href="privacy-policy.html">Privacy</a></li>
                 <li><a href="terms.html">Terms</a></li>
             </ul>
@@ -249,49 +451,99 @@
     </header>
 
     <main>
-        <section class="hero container">
-            <h1>Pack with Confidence</h1>
-            <p>A minimalist packing app for stress-free travel. Visual, simple, and completely offline.</p>
-            <div class="cta-buttons">
-                <!-- TODO: Replace this href with your actual Play Store URL after publishing -->
-                <a href="#" class="btn btn-primary">Get it on Google Play</a>
-                <a href="#features" class="btn btn-outline">Learn More</a>
+        <section class="hero">
+            <div class="container">
+                <h1>Pack with Confidence</h1>
+                <p>The minimalist, offline packing app. Take photos, create lists, and never forget your essentials again.</p>
+                <div class="cta-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=app.picpack.klzn" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="margin-right: 8px;">
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                        </svg>
+                        Get it on Google Play
+                    </a>
+                    <a href="#features" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="screenshots" class="screenshots-section">
+            <div class="container">
+                <div class="screenshots-wrapper">
+                    <button class="scroll-btn prev" aria-label="Previous screenshot">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    
+                    <div class="screenshots-container">
+                        <div style="width: 1px; flex: 0 0 auto;"></div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/my_trips.png" alt="My Trips Screen">
+                        </div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/trip_details.png" alt="Trip Details Screen">
+                        </div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/item_details.png" alt="Item Details Screen">
+                        </div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/history.png" alt="History Screen">
+                        </div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/storage.png" alt="Storage Screen">
+                        </div>
+                        <div class="screenshot-wrapper">
+                            <img src="images/templates.png" alt="Templates Screen">
+                        </div>
+                        <div style="width: 1px; flex: 0 0 auto;"></div>
+                    </div>
+
+                    <button class="scroll-btn next" aria-label="Next screenshot">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+
+                    <!-- Scroll Indicator -->
+                    <div class="scroll-track">
+                        <div class="scroll-thumb"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="features" class="features">
             <div class="container">
-                <h2 class="section-title">Simple, Visual, Effective</h2>
+                <h2 class="section-title">Why PicPack?</h2>
+                <p class="section-subtitle">Designed to make packing simple, visual, and stress-free.</p>
+                
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">📸</div>
-                        <h3>Photo-Based</h3>
-                        <p>Skip the text lists. Take photos of your items for instant visual recognition.</p>
+                        <div class="feature-icon-wrapper">📸</div>
+                        <h3>Visual Packing</h3>
+                        <p>Forget text-only lists. Snap photos of your actual items so you know exactly what you've packed and what's missing.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">👆</div>
-                        <h3>Swipe to Pack</h3>
-                        <p>Intuitive swipe gestures make packing and checking feel natural and fast.</p>
+                        <div class="feature-icon-wrapper">👆</div>
+                        <h3>Swipe to Check</h3>
+                        <p>Intuitive gestures make the process feel natural. Swipe right to pack, swipe left to skip. It's that easy.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>100% Private</h3>
-                        <p>All data stays on your device. No accounts, no cloud, no tracking.</p>
+                        <div class="feature-icon-wrapper">🔒</div>
+                        <h3>100% Private & Offline</h3>
+                        <p>Your data lives on your phone. No accounts, no cloud sync, no tracking. Total privacy, guaranteed.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">✈️</div>
-                        <h3>Multi-Pass Packing</h3>
-                        <p>No pressure to pack everything at once. Review items as many times as you need.</p>
+                        <div class="feature-icon-wrapper">📦</div>
+                        <h3>Smart Storage</h3>
+                        <p>Save frequently used items to your "Storage" to quickly add them to future trips without re-taking photos.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">📦</div>
-                        <h3>Reusable Storage</h3>
-                        <p>Save frequently packed items and create trip templates (Pro feature).</p>
+                        <div class="feature-icon-wrapper">📋</div>
+                        <h3>Templates</h3>
+                        <p>Create reusable templates for your common trips—like "Weekend Getaway" or "Gym"—to pack in seconds.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🌙</div>
-                        <h3>Dark Mode</h3>
-                        <p>Beautiful Material Design 3 interface with automatic dark mode support.</p>
+                        <div class="feature-icon-wrapper">🎨</div>
+                        <h3>Beautiful Design</h3>
+                        <p>Built with Material Design 3, featuring dynamic colors and a clean, modern interface that looks great in light or dark mode.</p>
                     </div>
                 </div>
             </div>
@@ -299,16 +551,73 @@
     </main>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
-                <!-- TODO: Replace with your contact email -->
-                <a href="mailto:TODO_REPLACE_WITH_YOUR_EMAIL@gmail.com">Contact</a>
+                <a href="mailto:klzn.dev@gmail.com">Contact Support</a>
             </div>
-            <!-- TODO: Replace "Developer Name" with your actual name -->
-            <p class="copyright">© 2025 Developer Name. All rights reserved.</p>
+            <p class="copyright">© 2025 klzn. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.screenshots-container');
+            const prevBtn = document.querySelector('.scroll-btn.prev');
+            const nextBtn = document.querySelector('.scroll-btn.next');
+            const track = document.querySelector('.scroll-track');
+            const thumb = document.querySelector('.scroll-thumb');
+            const scrollAmount = 304; // 280px card + 24px gap
+
+            if (!container || !prevBtn || !nextBtn || !track || !thumb) return;
+
+            const updateUI = () => {
+                // Update Buttons
+                const isAtStart = container.scrollLeft <= 0;
+                const isAtEnd = container.scrollLeft >= (container.scrollWidth - container.clientWidth - 10);
+
+                prevBtn.style.opacity = isAtStart ? '0.5' : '1';
+                prevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                
+                nextBtn.style.opacity = isAtEnd ? '0.5' : '1';
+                nextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+
+                // Update Scrollbar Thumb
+                // 1. Calculate the proportion of visible area to total scroll width
+                const scrollRatio = container.clientWidth / container.scrollWidth;
+                // 2. Set thumb width relative to track width
+                const thumbWidth = Math.max(track.clientWidth * scrollRatio, 20); // Min width 20px
+                thumb.style.width = `${thumbWidth}px`;
+
+                // 3. Calculate position
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                if (maxScrollLeft > 0) {
+                    const scrollProgress = container.scrollLeft / maxScrollLeft;
+                    const maxThumbTranslate = track.clientWidth - thumbWidth;
+                    const translate = scrollProgress * maxThumbTranslate;
+                    thumb.style.transform = `translateX(${translate}px)`;
+                }
+            };
+
+            prevBtn.addEventListener('click', () => {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            container.addEventListener('scroll', () => {
+                window.requestAnimationFrame(updateUI);
+            });
+            
+            // Update on resize too in case width changes
+            window.addEventListener('resize', updateUI);
+
+            // Initial check
+            updateUI();
+        });
+    </script>
 </body>
 </html>

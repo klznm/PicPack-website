@@ -37,6 +37,7 @@
             color: var(--on-surface);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-bottom: 120px; /* Space for the sticky newsletter bar */
         }
 
         .container {
@@ -165,8 +166,9 @@
         .cta-buttons {
             display: flex;
             gap: 16px;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
             margin-bottom: 60px;
         }
 
@@ -433,6 +435,99 @@
                 width: 240px;
             }
         }
+            /* Newsletter Bar */
+        .newsletter-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--surface);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 16px 24px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+        }
+
+        .newsletter-bar.closed {
+            transform: translateY(100%);
+        }
+
+        .newsletter-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        .newsletter-text {
+            flex: 1;
+        }
+
+        .newsletter-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--on-surface);
+            margin-bottom: 4px;
+        }
+
+        .newsletter-text p {
+            font-size: 14px;
+            color: var(--on-surface-variant);
+        }
+
+        /* ConvertKit Form Placeholder Styling */
+        .newsletter-form-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .newsletter-input {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--outline);
+            background: var(--background);
+            color: var(--on-surface);
+            font-size: 14px;
+            width: 240px;
+        }
+
+        .newsletter-submit {
+            background: var(--primary);
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .newsletter-submit:hover {
+            background: var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-content {
+                flex-direction: column;
+                align-items: stretch;
+                padding-right: 0;
+                gap: 16px;
+            }
+
+            .newsletter-form-wrapper {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -456,11 +551,8 @@
                 <h1>Pack with Confidence</h1>
                 <p>The minimalist, offline packing app. Take photos, create lists, and never forget your essentials again.</p>
                 <div class="cta-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=app.picpack.klzn" class="btn btn-primary">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="margin-right: 8px;">
-                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                        </svg>
-                        Get it on Google Play
+                    <a href="https://play.google.com/store/apps/details?id=app.picpack.klzn">
+                        <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style="height: 80px; margin: -10px 0;"/>
                     </a>
                     <a href="#features" class="btn btn-outline">Learn More</a>
                 </div>
@@ -550,6 +642,30 @@
         </section>
     </main>
 
+    <!-- Newsletter Sticky Bar -->
+    <div id="newsletter-bar" class="newsletter-bar">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h4>Join the Journey</h4>
+                <p>Get travel tips and updates on future apps. No spam, ever.</p>
+            </div>
+            
+            <!-- CONVERTKIT PLACEHOLDER START -->
+            <!-- 
+                INSTRUCTIONS:
+                1. Sign up for ConvertKit (Kit).
+                2. Create a new Form (Inline).
+                3. Copy the "Embed" code (HTML).
+                4. Replace the <div class="newsletter-form-wrapper">...</div> block below with your code.
+            -->
+            <div class="newsletter-form-wrapper">
+                <input type="email" placeholder="Your email address" class="newsletter-input" aria-label="Email Address">
+                <button type="button" class="newsletter-submit">Subscribe</button>
+            </div>
+            <!-- CONVERTKIT PLACEHOLDER END -->
+        </div>
+    </div>
+
     <footer>
         <div class="container footer-content">
             <div class="footer-links">
@@ -563,6 +679,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Carousel Logic
             const container = document.querySelector('.screenshots-container');
             const prevBtn = document.querySelector('.scroll-btn.prev');
             const nextBtn = document.querySelector('.scroll-btn.next');

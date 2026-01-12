@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://klznm.github.io/PicPack-website/sitemap.xml

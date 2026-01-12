@@ -5,7 +5,7 @@ This repository contains the source code for the official website of **PicPack**
 ## 🌐 Live Site
 
 The website is published via GitHub Pages and can be accessed here:
-👉 **[https://kaluzynym.github.io/repack/](https://kaluzynym.github.io/picpack/)**
+👉 **[https://klznm.github.io/PicPack-website/](https://klznm.github.io/PicPack-website/)**
 
 ## 📂 Contents
 
